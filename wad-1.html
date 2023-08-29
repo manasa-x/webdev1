@@ -1,0 +1,721 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;1,400&display=swap');
+
+:root {
+	--color-grey: #55595d;
+	--color-grey-medium: #888e94;
+	--color-grey-light: #c6c8ca;
+	--color-green: #5072A7;
+	--color-green-dark: #13274F;
+}
+
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Open sans', sans-serif;
+}
+
+/* HEADER STYLES */
+
+.header {
+	width: 100%;
+	height: 15vh;
+	background-color: var(--color-grey);
+	display: flex;
+	justify-content: space-around;
+}
+
+.brand-container {
+	display: flex;
+	align-items: center;
+	margin-left: 3rem;
+}
+
+.logo {
+	height: 5rem;
+	width: 5rem;
+	background-color: var(--color-grey-medium);
+	border-radius: 50%;
+	color: #fff;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-transform: uppercase;
+}
+
+.brand-name {
+	color: var(--color-grey-light);
+	margin: 0 0.5rem;
+	text-transform: uppercase;
+	width: 160px;
+	font-size: 0.9rem;
+}
+
+.header-right {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 1.5rem;
+	align-items: flex-end;
+	margin-right: 3rem;
+}
+
+.header-nav {
+	margin-bottom: 0.75rem;
+}
+
+.header-nav-link {
+	color: #fff;
+	font-size: 0.7rem;
+	padding: 0 0.5rem;
+	letter-spacing: 0.5px;
+	font-weight: 300;
+	text-decoration: none;
+}
+
+.header-nav-link:hover {
+	text-decoration: underline;
+}
+
+.header-nav-link:not(:last-of-type) {
+	border-right: 1px solid #fff;
+}
+
+.location {
+	font-weight: 600;
+	font-size: 1.1rem;
+	color: #fff;
+}
+
+.phone {
+	color: var(--color-green);
+}
+
+/* NAVBAR STYLES */
+.main-nav {
+	width: 100%;
+	padding: 0.5rem 0;
+	background-color: var(--color-green);
+	text-align: center;
+}
+
+.main-nav-link {
+	color: #fff;
+	text-transform: uppercase;
+	text-decoration: none;
+	margin: 0 1rem;
+	font-size: 0.8rem;
+}
+
+.main-nav-link:hover {
+	cursor: pointer;
+	color: var(--color-grey);
+}
+
+/* BANNER SECTION */
+.banner {
+	width: 100%;
+	height: 40vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-image: linear-gradient(
+			to right,
+			rgba(85, 89, 93, 0.9),
+			rgba(85, 89, 93, 0.9)
+		),
+		url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm373batch15-bg-11-kqaiv1bm.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=1f21f7cdacb8138b3890ac267cf16c84'); /* TODO get bg image */
+	background-size: cover;
+	background-position: top;
+	background-repeat: no-repeat;
+}
+
+.page-title {
+	color: #fff;
+	font-size: 2.2rem;
+	font-weight: 200;
+	text-transform: capitalize;
+	margin: 1rem;
+	line-height: 1.5;
+}
+
+/* WELCOME SECTION */
+.welcome {
+	background-image: linear-gradient(
+		to right,
+		rgba(255, 255, 255, 0.8),
+		rgba(255, 255, 255, 0.8)
+	); /* White veil set up. TODO get patterned background */
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 3rem;
+	color: var(--color-grey-medium);
+}
+
+.welcome-body {
+	width: 55%;
+	text-align: center;
+	margin-bottom: 1.5rem;
+	line-height: 1.5;
+	font-size: 0.9rem;
+}
+
+/* FEATURES SECTION */
+.features {
+	padding: 3rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-top: 1px solid var(--color-grey-light); /* TODO remove border when bg image is set */
+}
+
+.cards-container {
+	/* width: 70%; */
+	display: flex;
+	justify-content: space-evenly;
+	padding: 0.5rem;
+}
+
+.feature-card {
+	width: 30%;
+	width: 250px;
+	text-align: center;
+}
+
+.feature-card:not(:last-of-type) {
+	margin-right: 1rem;
+}
+
+.card-img-placeholder {
+	background-color: var(--color-grey);
+	width: 100%;
+	height: 8rem;
+	position: relative;
+	margin-bottom: 1rem;
+}
+
+.line1 {
+	width: 257px;
+	height: 74px;
+	border-bottom: 1px solid var(--color-grey-light);
+	transform: translateY(-5px) translateX(13px) rotate(27deg);
+	position: absolute;
+}
+.line2 {
+	width: 257px;
+	height: 74px;
+	border-bottom: 1px solid var(--color-grey-light);
+	transform: translateY(26px) translateX(-4px) rotate(-26deg);
+	position: absolute;
+	top: -33px;
+	left: -13px;
+}
+
+.card-title {
+	font-size: 1rem;
+	letter-spacing: 0.5px;
+	margin: 0 0 0.25rem;
+	font-weight: 100;
+	text-transform: capitalize;
+}
+
+.card-subtitle {
+	font-weight: 200;
+	font-size: 0.8rem;
+	color: var(--color-green);
+	margin-bottom: 0.5rem;
+	text-transform: capitalize;
+	letter-spacing: 0.5px;
+}
+
+.card-body {
+	margin: 0 auto 1rem;
+	padding: 0.5rem;
+}
+
+/* NURSES SECTION */
+.nurses {
+	background-image: linear-gradient(
+		to right,
+		rgba(85, 89, 93, 0.9),
+		rgba(85, 89, 93, 0.9)
+	);
+	color: #fff;
+	padding: 2rem;
+}
+
+.nurses-content {
+	width: 400px;
+	margin-left: 20%;
+}
+
+.badge-container {
+	display: flex;
+	padding: 1.5rem 0;
+	justify-content: space-between;
+}
+
+.badge-placeholder {
+	height: 5rem;
+	width: 5rem;
+	background: var(--color-grey-medium);
+	color: #fff;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+/* CONTACT FORM STYLES */
+.contact {
+	position: relative;
+	background-color: #f7f7f7;
+	color: var(--color-grey-medium);
+	padding: 1.5rem;
+}
+
+.required-mention {
+	position: absolute;
+	top: 1rem;
+	right: 2rem;
+	font-size: 0.6rem;
+}
+
+.form-container {
+	width: 55%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.contact-form {
+	width: 100%;
+	display: flex;
+}
+
+.contact-form-left {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-form-right {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+}
+
+.contact-form-input {
+	padding: 0.75rem;
+	margin: 0.25rem 0.5rem;
+	border: none;
+	outline: none;
+}
+
+.contact-form-input::placeholder {
+	font-size: 0.6rem;
+	color: var(--color-grey-light);
+	letter-spacing: 1px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.accept-terms {
+	font-size: 0.7rem;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.accept-terms-check {
+	height: 1rem;
+	width: 1rem;
+	background-color: #fff;
+	margin-right: 0.5rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+}
+
+.terms {
+	color: var(--color-green);
+	text-decoration: none;
+}
+
+.contact-form-submit {
+	display: flex;
+	padding: 0.5rem 0;
+	justify-content: space-between;
+	padding: 0.25rem 0.5rem;
+}
+
+.submit-slider {
+	font-size: 0.6rem;
+	padding: 0.5rem;
+	background: var(--color-green);
+	color: #fff;
+	text-align: center;
+	flex: 1;
+}
+
+.arrow-green {
+	background: var(--color-green-dark);
+	color: #fff;
+	padding: 0.55rem;
+	font-size: 0.7rem;
+}
+
+/* FOOTER */
+.footer {
+	background-color: var(--color-grey);
+	color: #fcfcfc;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 2rem;
+}
+
+.footer-top {
+	width: 70%;
+	border-bottom: 1px solid var(--color-grey-light);
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.9rem;
+	font-weight: 500;
+}
+
+.footer-bottom {
+	width: 70%;
+	font-size: 0.67em;
+	font-weight: 600;
+	text-align: left;
+}
+
+.footer-top-left {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 1rem;
+	padding: 1rem 0;
+}
+
+.footer-top-right {
+	text-align: right;
+}
+
+.footer-contact {
+	line-height: 1.7;
+	font-weight: 600;
+	letter-spacing: 0.25px;
+}
+
+.footer-contact-name {
+	font-weight: 700;
+}
+
+.social-links {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 2rem;
+}
+
+.social-link {
+	margin-left: 1rem;
+	font-size: 1.2rem;
+}
+
+.etna,
+.etna:visited,
+.etna:active {
+	color: var(--color-green);
+	text-decoration: none;
+}
+
+.footer-disclaimer {
+	margin: 1.5rem 0;
+}
+
+.footer-copy {
+	font-size: 0.9rem;
+}
+
+.footer-links {
+	padding: 1.5rem 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer-nav > a {
+	color: #fff;
+	text-decoration: none;
+	padding: 0 0.5rem;
+}
+
+.footer-nav > a:not(:last-of-type) {
+	border-right: 1px solid var(--color-grey-light);
+}
+
+.footer-social {
+	background-color: var(--color-grey-medium);
+	color: #fff;
+	border: none;
+	font-weight: 100;
+	font-size: 0.6rem;
+	border-radius: 3px;
+	margin-right: 0.5rem;
+	text-decoration: none;
+	padding: 0.25rem 0.25rem 0.25rem 0;
+}
+
+.footer-social:last-of-type {
+	padding: 0.25rem 0.4rem;
+}
+
+.footer-social-icon {
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	font-size: 0.6rem;
+	margin-right: 0.25rem;
+	padding: 0.4rem;
+}
+
+/* UTILITY CLASSES */
+.cta-outlined {
+	border: 1px solid #fff;
+	color: #fff;
+	background-color: transparent;
+	padding: 0.75rem 2.5rem;
+	text-transform: uppercase;
+	font-size: 0.7rem;
+	width: 250px;
+}
+
+.cta-outlined:hover {
+	background-color: #fff;
+	color: var(--color-grey);
+	border: 1px solid var(--color-grey);
+}
+
+.cta-green {
+	color: #fff;
+	width: 250px;
+	background-color: var(--color-green);
+	padding: 0.75rem 2.5rem;
+	text-transform: uppercase;
+	font-size: 0.7rem;
+	border: none;
+	outline: none;
+}
+
+.section-title {
+	font-weight: 200;
+	font-size: 1.7rem;
+	margin-bottom: 1rem;
+	letter-spacing: 0.5px;
+}
+
+.body-text {
+	line-height: 1.3;
+	font-size: 0.8rem;
+	font-weight: 300;
+	color: var(--color-grey);
+}
+
+.body-text.light {
+	color: #fff;
+	margin-bottom: 1.5rem;
+}
+
+button:hover {
+	cursor: pointer;
+	filter: brightness(110%);
+}
+
+.arrow {
+	padding: 0 0 0 0.25rem;
+}
+
+    </style>
+
+
+
+</head>
+<body>
+    <header class="header">
+        <div class="brand-container">
+            <div class="logo">Logo</div>
+            <p class="brand-name">Hospital Management System</p>
+        </div>
+        <div class="header-right">
+            <nav class="header-nav">
+                <a href="#" class="header-nav-link">Home</a>
+                <a href="#" class="header-nav-link">Patient Portal</a>
+                <a href="#" class="header-nav-link">Register</a>
+                <a href="#" class="header-nav-link">Log In</a>
+            </nav>
+            
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <a href="#" class="main-nav-link">About us</a>
+        <a href="#contact" class="main-nav-link">Contact us</a>
+    </nav>
+    
+    <main class="main">
+        
+        <section class="banner">
+            <h1 class="page-title">Towards Better health.</h1>
+            <button class="cta-outlined">Book an Appointment <i class="fas fa-chevron-right arrow"></i></button> 
+        </section>
+      
+        <section class="welcome">
+            <h1 class="section-title">Healthcare Services</h1>
+            <p class="welcome-body">We provide efficient healthcare management solutions for hospitals and medical institutions.</p>
+            <button class="cta-green">
+                Learn More 
+                <i class="fas fa-chevron-right arrow"></i>
+            </button>
+        </section>
+      
+        <section class="features">
+            <div class="cards-container">
+                <card class="feature-card">
+                    <div class="card-img-placeholder">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <h3 class="card-title">Find Doctors</h3>
+                  
+                    <p class="card-body body-text">Explore and search for a doctor to schedule an appointment.</p>
+                    <button class="cta-green">Learn More <i class="fas fa-chevron-right arrow"></i></button>
+                </card>
+    
+                <card class="feature-card">
+                    <div class="card-img-placeholder">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <h3 class="card-title">Medicines</h3>
+                 
+                    <p class="card-body body-text">Explore reviews of top vitamins, supplements and medicines to find what you need to meet your health goals.</p>
+                    <button class="cta-green">Learn More <i class="fas fa-chevron-right arrow"></i></button>
+                </card>
+    
+                <card class="feature-card">
+                    <div class="card-img-placeholder">
+                        <div class="line1"></div>
+                        <div class="line2"></div>
+                    </div>
+                    <h3 class="card-title">Latest Healthcare News</h3>
+                   
+                    <p class="card-body body-text">Learn about various healthcare related news and tips.</p>
+                    <button class="cta-green">Learn More <i class="fas fa-chevron-right arrow"></i></button>
+                </card>
+            </div>
+        </section>
+
+
+        <section class="nurses">
+
+            <div class="nurses-content">
+                <h1 class="section-title">Our Practitioners</h1>
+                <p class="body-text light">Learn about our medical providers in various fields of expertise that assist you in providing right medical services.</p>
+                <button class="cta-outlined">Book an appointment <i class="fas fa-chevron-right arrow"></i></button>
+                <div class="badge-container">
+                    <div class="badge-placeholder">Badge</div>
+                    <div class="badge-placeholder">Badge</div>
+                    <div class="badge-placeholder">Badge</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section class="contact" id="contact">
+            <div class="form-container">
+                <h1 class="section-title">Contact Us</h1>
+                <span class="required-mention">Fields marked &#42; are required</span>
+                <form class="contact-form">
+                    <div class="contact-form-left">
+                        <input type="text" class="contact-form-input" placeholder="First Name&#42;">
+                        <input type="text" class="contact-form-input" placeholder="Last Name&#42;">
+                        <input type="text" class="contact-form-input" placeholder="Email&#42;">
+                        <input type="text" class="contact-form-input" placeholder="Phone&#42;">
+                        <input type="text" class="contact-form-input" placeholder="ZIP Code&#42;">
+                        <div class="accept-terms contact-form-input">
+                            <input type="checkbox" name="accept-terms" id="accept-terms" class="accept-terms-check">
+                            <label for="accept-terms">
+                                I accept the <a href="#" class="terms">Terms of use</a>&#42;
+                            </label>
+                        </div>
+                    </div>
+                    <div class="contact-form-right">
+                        <input type="text" class="contact-form-input" placeholder="Procedures of interest&#42;"> 
+                        <textarea name="contact-form-details" class="contact-form-input" id="" cols="30" rows="10" placeholder="How can we help?&#42;"></textarea>
+                        <div class="contact-form-submit">
+                            <i class="fas fa-chevron-right arrow-green"></i>
+                            <p class="submit-slider" type="submit">
+                                Slide right to submit this form
+                            </p>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="footer">
+            <section class="footer-top">
+                <div class="footer-top-left">
+                    <div class="footer-contact">
+                        <p>
+                            Phone: <span class="phone">(+91) 123-4567-890</span>
+                        </p>
+                        <p>Monday-Friday: 8 am - 9 pm</p>
+                    </div>
+                </div>
+                <div class="footer-top-right">
+                    <div class="social-links">
+                        <i class="fab fa-facebook-f social-link"></i>
+                        <i class="fab fa-twitter social-link"></i>
+                        <i class="fab fa-instagram social-link"></i>
+                        <i class="fab fa-youtube social-link"></i>
+                    </div>
+                    <p class="footer-copy">&copy; Copyright 2023. All rights reserved.</p>
+                </div>
+            </section>
+            <section class="footer-bottom">
+               
+                <div class="footer-links">
+                    <nav class="footer-nav">
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Related Resources</a>
+                        <a href="#">Site Map</a>
+                    </nav>
+                    
+                </div>
+            </section>            
+        </footer>
+    </main>
+</body>
+</html>
